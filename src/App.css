@@ -1,38 +1,99 @@
-.App {
+/* Reset and default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(120deg, #ffb74d, #ff9800); /* Dégradé entre le jaune et l'orange */
+  color: #333;
+}
+
+header {
+  background-color: linear-gradient(120deg, #ffb74d, #ff9800);  /* Orange vif pour le header */
+  color: white;
   text-align: center;
+  padding: 1rem 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+main {
+  padding: 1rem;
+  background-color: transparent; /* Fond transparent pour le contenu principal */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+input[type="text"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+  border: 1px solid #8f450820;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #67513c20;
+  font-size: 16px;
+  outline: none;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.card {
+  background-color: rgba(255, 255, 255, 0.4); /* Cartes avec une couleur semi-transparente */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-title {
+  color: #ef6c00; /* Orange vif pour les titres de cartes */
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card-text {
+  color: #444; /* Couleur grise légère pour les détails de cartes */
+}
+#cards{
+  background-color: #22100120;
+  width: 180px;
+}
+.logo{
+  width: 300px;
+  height: 100px;
+}
+select {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+  border: 1px solid #8f450820;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #67513c20;
+  font-size: 16px;
+  outline: none;
+  color: white;
+}
+
+select:hover,
+select:focus {
+  border-color: #ffb74d; /* Changement de couleur au survol/focus */
+}
+.form-control{
+height: 35px;
+
+color:#67513c20 ;
+}
+#Functions{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  
+}
+#pokemons{
+  margin-top: 50px;
 }
