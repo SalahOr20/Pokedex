@@ -49,7 +49,19 @@ function App() {
     setSearch(e.target.value.toLowerCase());
   };
 
-  const HandlePokemon = pokemon => {
+  const HandlePokemon = (pokemon) => {
+    const evolvedFromIds = Object.keys(pokemon.evolvedFrom || {}).map(Number);
+    const evolvesToIds = Object.keys(pokemon.evolvesTo || {}).map(Number);
+    
+    const evolutionFromPokemons = dataPokemon.filter((p) => evolvedFromIds.includes(p.id));
+    const evolutionToPokemons = dataPokemon.filter((p) => evolvesToIds.includes(p.id));
+  
+    console.log("Evolution From:", evolutionFromPokemons);
+    console.log("Evolution To:", evolutionToPokemons);
+    console.log("Selected Pokemon:", pokemon);
+  
+    setEvolutionFrom(evolutionFromPokemons);
+    setEvolutionTo(evolutionToPokemons);
     setPokemon(pokemon); 
   };
 
@@ -94,25 +106,6 @@ function App() {
     }
   };
    
-  const HandleEvolutionFrom = (pok) => {
-    const evolvedFromIds = Object.keys(pok.evolvedFrom).map(Number);
-    const pokemonEvol = dataPokemon.filter((pokemon) =>
-      evolvedFromIds.includes(pokemon.id)
-    );
-  
-    setEvolutionFrom(pokemonEvol);
-  };
-
-  const HandleEvolutionTo = (pok) => {
-    const evolvesToIds = Array.isArray(pok.evolvesTo) ? pok.evolvesTo : [];
-    const pokemonEvol = dataPokemon.filter((pokemon) =>
-      evolvesToIds.includes(pokemon.id)
-    );
-  
-    setEvolutionTo(pokemonEvol);
-  };
-  
-
   useEffect(() => {
     let filteredData = dataPokemon;
 
@@ -218,8 +211,7 @@ function App() {
                     className="col-lg-2 col-md-3 col-sm-4 col-6 mb-3"
                     onClick={() => {
                       HandlePokemon(pokemon);
-                      HandleEvolutionFrom(pokemon);
-                      HandleEvolutionTo(pokemon);
+                    
                     }}
                     
                   >
@@ -248,7 +240,7 @@ function App() {
         )}
         <div></div>
         {selectedPokemon && (
-          <Pokemon pok={selectedPokemon} reset={resetPokemon} evolFrom={evolutionFrom} evolTo={evolutionTo}/>
+          <Pokemon setPokemon={setPokemon} pokemon={selectedPokemon} reset={resetPokemon} evolFrom={evolutionFrom} evolTo={evolutionTo}/>
         )}
       </main>
     </div>
